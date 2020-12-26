@@ -1,0 +1,82 @@
+<nav
+  class="navbar sticky-top justify-content-end navbar-expand-lg navbar-dark bg-dark"
+>
+  <a class="navbar-brand" href="/">School Management System</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav justify-content-end">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+
+      {%if user.is_authenticated%}
+
+      <li class="nav-item">
+        <a class="nav-link" href="logout">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="TEacherview">Teacher View</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="pregister">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="#">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Conatct</a>
+      </li>
+    </ul>
+  </div>
+  {%if user.is_authenticated%}
+
+  <form class="form-inline my-2 mx-2 my-lg-0" style="margin-right: 3px">
+    
+    <a href="#" ><i class="fa fa-bell-o" aria-hidden="true" style="color: azure;width: 30px;"></i></a>
+
+    <div class="dropdown dropleft">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{user.username}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="editprofile/{{user.id}}">Edit Profile</a>
+        <a class="dropdown-item" href="logout">Logout</a>
+        
+      </div>
+    </div>
+
+    <a href="logout" class="mx-1" title="Log-out" data-toggle="tooltip" data-placement="bottom"
+      ><i
+        class="fa fa-sign-out fa-1x"
+        aria-hidden="true"
+        style="color: aliceblue"
+        style="width: 20px;"
+      ></i
+    ></a>
+  </form>
+  {%endif%}
+</nav>
+
+<script
+  src="https://kit.fontawesome.com/c2f5af57be.js"
+  crossorigin="anonymous"
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+></script>

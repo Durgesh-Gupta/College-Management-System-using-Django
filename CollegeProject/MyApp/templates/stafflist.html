@@ -1,0 +1,34 @@
+{%extends 'teacherhome.html'%}
+
+ {% block teacher %}
+
+     
+<h1 class="text-justify">Staff list</h1>
+<table class="table table-bordered">
+    <thead>
+<tr class="table-primary">
+    <th>USername</th>
+    <th>name</th>
+    <th>contact</th>
+    <th>branch</th>
+    <th>position</th>
+    <th>Email</th>
+    <th colspan="3">Action</th>
+</tr>
+</thead>
+{% for i in object_list%}
+<tr class="font-weight-bold">
+<td>{{i.username}}</td>
+<td>{{i.first_name}}</td>
+<td>{{i.conatct}}</td>
+<td>{{i.branch}}</td>
+<td>{{i.position}}</td>
+<td>{{i.email}}</td>
+<td><a href="">Edit</a></td>
+
+
+</tr>
+{% endfor %}
+</table>
+<hr>
+ {% endblock teacher %}

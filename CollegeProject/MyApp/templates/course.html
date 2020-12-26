@@ -1,0 +1,25 @@
+{%extends 'teacherhome.html'%}
+
+ {% block teacher %}
+
+{%load static%}
+<div class="row">
+    {% for i in object_list%}
+
+  <div class="col-md-4 col-sm-6 col-s-12">
+    <div class="card" style="width: 18rem;">
+      <img src="{{i.img}}" alt="" class="card-img-top">
+
+      <div class="card-body">
+        <h5 class="card-title"><a href="{{i.clink}}">{{i.Cname}}</a></h5>
+        <p>
+          {{i.desc}}
+        </p>
+        <a href="#" class="btn btn-danger"> Read more text </a>
+      </div>
+    </div>
+  </div>
+</div>
+{%endfor%}
+      {% endblock teacher %}
+
