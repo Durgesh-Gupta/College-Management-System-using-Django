@@ -13,6 +13,7 @@ urlpatterns = [
     path('teacherlist',v.TeacherList.as_view()),
 
     path('editprofile/<int:id>',v.UpdateProfile),
+    path('editmarks/<int:id>',v.UpdateMarks),
     path('deletestud/<int:id>',v.deleteStudent),
     
     path('appreje/<int:id>',v.appreje),
@@ -25,5 +26,7 @@ urlpatterns = [
     path('addStaff',v.addStaff),
     path('lf',v.leaveform),
     path('appleav',v.LeaveSelect),
+    path('addMarks',v.addMarks),
+    path('MarksList',v.MarksList),
 
 ]

@@ -2,39 +2,38 @@
 
 {% block teacher %}
  <div class="row my-5">
-    <div class="card-deck">
+    <div class="card-deck" style="width: 1200px;">
 
-        <div class="card bg-primary">
+        <div class="card bg-primary text-center">
           <div class="card-header">Total Student</div>
           <div class="card-body">
             <div class="card-title mx-auto"><i class="fa fa-users fa-5x" aria-hidden="true"></i>
 </div>
             <div class="card-text">
-              {{totalstudent}}
+             <h3 class="text-center"> {{totalstudent}} </h3>
             </div>
           </div>
         </div>
-        <div class="card">
+        <div class="card bg-danger text-center">
           <div class="card-header">Subject</div>
           <div class="card-body">
-            <div class="card-title">Title2</div>
+            <div class="card-title"><i class="fa fa-address-book fa-5x" aria-hidden="true"></i></div>
             <div class="card-text">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Consequatur alias at asperiores magni.
+             <h3> {{allsub}}</h3>
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header">HEader</div>
+        <div class="card bg-warning text-center">
+          <div class="card-header">Leave Request</div>
           <div class="card-body">
-            <div class="card-title">Title3</div>
+            <div class="card-title"><i class="fa fa-calendar-times-o fa-5x" aria-hidden="true"></i>
+            </div>
             <div class="card-text">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Consequatur alias at asperiores magni.
+              <h3>{{leav}}</h3>
             </div>
           </div>
         </div>
-        <div class="card">
+        <!-- <div class="card">
           <div class="card-header">HEader</div>
           <div class="card-body">
             <div class="card-title">Title4</div>
@@ -43,7 +42,7 @@
               Consequatur alias at asperiores magni.
             </div>
           </div>
-        </div>
+        </div> -->
 
 
       </div>

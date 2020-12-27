@@ -107,16 +107,13 @@ def teacherview(request):
     sid=request.session.get('uid')
     print(sid)
     staff=Staff.objects.filter(id=sid)
-    print(staff)
-    # for i in staff:
-    #     print(i.branch)
-    # bid=staff[0].branch
-    # totalstudent=UserModel.objects.filter(Branch=bid).count()
-    # print(totalstudent)
-    # d={'totalstudent':totalstudent}
+    std=UserModel.objects.all().count()
+    cour=Course.objects.all().count()
+    leav=Leave.objects.filter(status=1).count()
+    data={'totalstudent':std,'allsub':cour,'leav':leav}
 
-    return render(request,'thome.html')
-    # return render(request,'thome.html',d)
+    return render(request,'thome.html',data)
+    
 
     # Leave Fprm
 def leaveform(request):
@@ -157,3 +154,28 @@ def appreje(request,id):
     llist.status=2
     llist.save()
     return render(request,'leaveform.html')
+
+from .models import Marks,MarksForm
+
+def addMarks(request):
+    if request.method=='POST':
+        f=MarksForm(request.POST)
+        f.save()
+        return redirect('/')
+    else:
+        f=MarksForm
+        return render(request,'marksenter.html',{'forms':f})
+
+def MarksList(request):
+    marks=Marks.objects.all()
+    return render(request,'Markslist.html',{'marks':marks})
+
+def UpdateMarks(request,id):
+    e=Marks.objects.get(id=id)
+    if request.method=='POST':
+        st=MarksForm(request.POST,instance=e)
+        st.save()
+        return redirect('/')
+    else:
+        st=MarksForm(instance=e)
+    return render(request,'marksenter.html',{'forms':st})

@@ -1,0 +1,30 @@
+{%extends 'teacherhome.html'%}
+
+ {% block teacher %}
+
+     
+<h1 class="text-justify">Staff list</h1>
+<table class="table table-bordered">
+    <thead>
+<tr class="table-primary">
+    <th>Student Id</th>
+    <th>Course</th>
+    <th>Marks</th>
+    <th>Outoff</th>
+    <th>Action</th>
+    
+</tr>
+</thead>
+{% for i in marks%}
+<tr class="font-weight-bold">
+<td>{{i.s_id}}</td>
+<td>{{i.c_id}}</td>
+<td>{{i.marks}}</td>
+<td>{{i.out_of_m}}</td>
+<td><a href="editmarks/{{i.id}}">Edit</a></td>
+
+</tr>
+{% endfor %}
+</table>
+<hr>
+ {% endblock teacher %}
