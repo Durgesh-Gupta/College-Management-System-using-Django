@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block main%}
+<div class="row">
+    <div class="col-md-4 offset-4">
+        <form action="" method="POST">
+            {%csrf_token%}
+            <div class="form-group">
+                <label for="">Reason</label>
+                <input type="text" class="form-control" name="reason" placeholder="Enter Reason for Leave..">
+            </div>
+
+            <div class="form-group">
+                <label for="">Message</label>
+                <input type="textarea" class="form-control" name="message" placeholder="Enter Message...">
+            </div>
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </form>
+    </div>
+</div>
+
+{%endblock%}
