@@ -87,6 +87,19 @@ class Leaveform(forms.ModelForm):
         model=Leave
         fields=['reason','message']
 
+class Marks(models.Model):
+    s_id=models.ForeignKey(UserModel,on_delete=models.CASCADE)
+    c_id=models.ForeignKey(Course,on_delete=models.CASCADE)
+    marks=models.IntegerField()
+    out_of_m=models.IntegerField(default=100)
+
+class MarksForm(forms.ModelForm):
+    class Meta:
+        model=Marks
+        fields='__all__'
+
+
+
 #         # image=models.ImageField(null=True,blank=True,upload_to="products")
 #     # active=models.BooleanField(default=True)
 #     # createdDate=models.DateTimeField(auto_now_add=True)

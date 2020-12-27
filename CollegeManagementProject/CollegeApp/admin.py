@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import BranchModel,Course,position,leavestatus
 # Register your models here.
 class BranchAdmin(admin.ModelAdmin):
+    list_display=['B_no','Bname']
     class Meta:
         model=BranchModel
     
