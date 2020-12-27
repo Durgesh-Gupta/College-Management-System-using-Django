@@ -1,0 +1,36 @@
+{%extends 'teacherhome.html'%}
+
+ {% block teacher %}
+
+     
+<h1 class="text-justify">Leave Request</h1>
+<table class="table table-bordered">
+    <thead>
+<tr class="table-primary">
+    <th>Sr.no</th>
+    <th>Student name</th>
+    <th>Reason</th>
+    <th>Message</th>
+    <th>Date</th>
+    
+    <th colspan="3">Status</th>
+</tr>
+</thead>
+{% for i in llist%}
+<tr class="font-weight-bold">
+<td>{{i.id}}</td>
+<td>{{i.std_id}}</td>
+<td>{{i.reason}}</td>
+<td>{{i.message}}</td>
+<td>{{i.on_date}}</td>
+
+<td><button type="submit" class="btn btn-success " href="appreje/{{i.id}}" name="appr">approv</button></td>
+<td><button type="submit" class="btn btn-danger" href="appreje/{{i.id}}" name="rej">Reject</button></td>
+
+
+
+</tr>
+{% endfor %}
+</table>
+<hr>
+ {% endblock teacher %}

@@ -76,9 +76,10 @@ class leavestatus(models.Model):
         return s.status
 
 class Leave(models.Model):
-    std_id=models.ForeignKey(UserModel,on_delete=models.CASCADE)
+    std_id=models.IntegerField()
     reason=models.CharField(max_length=120)
     message=models.TextField(max_length=420)
+    on_date=models.DateTimeField(auto_now_add=True)
     status=models.ForeignKey(leavestatus,on_delete=models.CASCADE,default=1)
 
 class Leaveform(forms.ModelForm):

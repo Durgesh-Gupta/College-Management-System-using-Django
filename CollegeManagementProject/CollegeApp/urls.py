@@ -14,6 +14,8 @@ urlpatterns = [
 
     path('editprofile/<int:id>',v.UpdateProfile),
     path('deletestud/<int:id>',v.deleteStudent),
+    
+    path('appreje/<int:id>',v.appreje),
 
     path('login',v.login_view),
     path('logout',v.logout_view),
@@ -22,5 +24,6 @@ urlpatterns = [
 
     path('addStaff',v.addStaff),
     path('lf',v.leaveform),
+    path('appleav',v.LeaveSelect),
 
 ]

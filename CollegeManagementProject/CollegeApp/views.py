@@ -123,20 +123,37 @@ def leaveform(request):
     if request.method=='POST':
         uid=request.session.get('uid')
         print("uid:",uid)
-        user=UserModel.objects.filter(id=uid)
-        print("user:",user)
-
-        userid=user[0].id
-        print("userid:",userid)
         reson=request.POST.get('reason')
         message=request.POST.get('message')
-        # print(prd.id,prd.name,prd.price)
+        print("reason:",reson)
+        print("message",message)
+        
         le=Leave()
-        le.std_id=user
+        le.std_id=uid
         le.reason=reson
         le.message=message
         le.save()
         return redirect('/')
     else:
         f=Leaveform
-        return render(request,'leaveform.html',{'forms':f})
+        llist=Leave.objects.all()
+    
+
+        return render(request,'leaveform.html',{'forms':f,'llist':llist})
+
+
+def LeaveSelect(request):
+    llist=Leave.objects.all()
+    if request.method=='POST':
+        st=Leaveform(request.POST)
+        st.save()
+        return redirect('/')
+    else:
+        st=Userform()
+        return render(request,'leaveapply.html',{'llist':llist})
+
+def appreje(request,id):
+    llist=Leave.objects.filter(id=id)
+    llist.status=2
+    llist.save()
+    return render(request,'leaveform.html')
