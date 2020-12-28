@@ -1,8 +1,13 @@
 
 {%extends 'base.html'%}
 {%block main%}
-<div class="row">
-<div class="col-md-8 offset-2">
+<div class="row my-2">
+<div class="col-md-8 offset-2 my-2">
+    {%if a is 1%}
+    <h1 class="text-center my-2" style="font-family: 'Times New Roman', Times, serif;background-color: rgb(56, 148, 190);border-radius: 20px;"><u> Student Sign-in</u></h1>
+    {%else%}
+    <h1 class="text-center my-2" style="font-family: 'Times New Roman', Times, serif;background-color: rgb(250, 198, 57);border-radius: 20px;"><u> Teacher Sign-in</u></h1>
+    {%endif%}
 <form action="" method="post">
     {%csrf_token%}
     <table class="table table-bordered">

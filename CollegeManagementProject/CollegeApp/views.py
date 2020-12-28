@@ -20,7 +20,8 @@ def register(request):
         return redirect('/')
     else:
         f=Userform
-        return render(request,'registerpage.html',{'forms':f})
+        a=1
+        return render(request,'registerpage.html',{'forms':f,'a':a})
 
 # # lists------------------------------>
 class Studentlist(ListView):
@@ -51,13 +52,7 @@ def login_view(request):
         if user is not None:
             request.session['uid']=user.id
             login(request,user)
-
-            
-
             return redirect('/')
-
-
-
         else:
             msg="Invalid username or password"
             return render(request,'form.html',{'msg':msg})
@@ -80,7 +75,8 @@ def addStaff(request):
         return redirect('/')
     else:
         f=StaffForm
-        return render(request,'registerpage.html',{'forms':f})
+        a=2
+        return render(request,'registerpage.html',{'forms':f,'a':a})
 
 
 # Update Profile
