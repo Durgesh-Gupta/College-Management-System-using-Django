@@ -1,0 +1,32 @@
+{%extends 'teacherhome.html'%}
+
+ {% block teacher %}
+
+     
+<h1 class="text-justify">Leave Request</h1>
+<table class="table table-bordered">
+    <thead>
+<tr class="table-primary">
+    <th>Student Id</th>
+    <th>Reason</th>
+    <th>MEssage</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Action</th>
+    
+</tr>
+</thead>
+{% for i in llist%}
+<tr class="font-weight-bold">
+<td>{{i.std_id}}</td>
+<td>{{i.reason}}</td>
+<td>{{i.message}}</td>
+<td>{{i.on_date}}</td>
+<td>{{i.status}}</td>
+<td><a href="appleav/{{i.id}}">Edit</a></td>
+
+</tr>
+{% endfor %}
+</table>
+<hr>
+ {% endblock teacher %}

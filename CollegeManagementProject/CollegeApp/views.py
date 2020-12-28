@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .models import Userform,UserModel,Course,LoginForm,position,Staff,StaffForm,User,Leave,Leaveform,leavestatus
+from .models import Userform,UserModel,Course,LoginForm,position,Staff,StaffForm,User,Leave,Leaveform,leavestatus,Tleave
 from django.contrib.auth.models import User
 
 from django.views.generic import ListView,UpdateView
@@ -138,16 +138,26 @@ def leaveform(request):
 
         return render(request,'leaveform.html',{'forms':f,'llist':llist})
 
-
-def LeaveSelect(request):
+def leavlist(request):
     llist=Leave.objects.all()
+    
+    return render(request,'live_list.html',{'llist':llist})
+
+def LeaveSelect(request,id):
+    e=Leave.objects.get(id=id)
+    
     if request.method=='POST':
-        st=Leaveform(request.POST)
-        st.save()
+        st=Leaveform(request.POST,instance=e)
+    
+        lt=Tleave(request.POST,instance=e)
+        lt.save()
         return redirect('/')
     else:
-        st=Userform()
-        return render(request,'leaveapply.html',{'llist':llist})
+        st=Tleave(instance=e)
+        e=Leaveform(instance=e)
+        return render(request,'leaveapply.html',{'forms':st,'e':e})
+
+
 
 def appreje(request,id):
     llist=Leave.objects.filter(id=id)

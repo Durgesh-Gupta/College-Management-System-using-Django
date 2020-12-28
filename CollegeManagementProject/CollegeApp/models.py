@@ -82,6 +82,11 @@ class Leave(models.Model):
     on_date=models.DateTimeField(auto_now_add=True)
     status=models.ForeignKey(leavestatus,on_delete=models.CASCADE,default=1)
 
+class Tleave(forms.ModelForm):
+    class Meta:
+        model=Leave
+        fields=['status']
+
 class Leaveform(forms.ModelForm):
     class Meta:
         model=Leave

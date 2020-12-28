@@ -3,23 +3,20 @@
  {% block teacher %}
 
 {%load static%}
-<div class="row">
+<div class="row mx-2">
     {% for i in object_list%}
-
-  <div class="col-md-4 col-sm-6 col-s-12">
-    <div class="card" style="width: 18rem;">
-      <img src="{{i.img}}" alt="" class="card-img-top">
-
-      <div class="card-body">
-        <h5 class="card-title"><a href="{{i.clink}}">{{i.Cname}}</a></h5>
-        <p>
-          {{i.desc}}
-        </p>
-        <a href="#" class="btn btn-danger"> Read more text </a>
-      </div>
+<div class="card-deck mb-4">
+  <div class="card" style="width: 15rem;">
+    <img class="card-img-top" src="{{i.img}}" height="180px" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{i.Cname}}</h5>
+      <p class="card-text">{{i.desc}}</p>
+      <button type="button" class="btn btn-primary">Read more</button>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
+    
 {%endfor%}
+  </div>
       {% endblock teacher %}
 

@@ -24,8 +24,11 @@ urlpatterns = [
     # path('enroll/<int:id>',v.EnrollCource),
 
     path('addStaff',v.addStaff),
+    
     path('lf',v.leaveform),
-    path('appleav',v.LeaveSelect),
+    path('appleav/<int:id>',v.LeaveSelect),
+    path('appleav',v.leavlist),
+
     path('addMarks',v.addMarks),
     path('MarksList',v.MarksList),
 
