@@ -89,7 +89,8 @@ def UpdateProfile(request,id):
         return redirect('/')
     else:
         st=Userform(instance=e)
-    return render(request,'registerpage.html',{'forms':st})
+        a=3
+    return render(request,'registerpage.html',{'forms':st,'a':a})
 
 def deleteStudent(request,id):
     st=UserModel.objects.get(id=id)
@@ -129,7 +130,7 @@ def leaveform(request):
         return redirect('/')
     else:
         f=Leaveform
-        llist=Leave.objects.all()
+        llist=Leave.objects.filter(std_id=request.session.get('uid'))
     
 
         return render(request,'leaveform.html',{'forms':f,'llist':llist})
@@ -185,3 +186,21 @@ def UpdateMarks(request,id):
     else:
         st=MarksForm(instance=e)
     return render(request,'marksenter.html',{'forms':st})
+
+
+# ------------------My COurse
+from .models import BranchModel
+def MyCourse(request):
+    Uid=request.session.get('uid')
+    print(Uid)
+    u_id=UserModel.objects.filter(id=Uid)
+    print(u_id)
+    print(u_id[0].Branch)
+    bran=BranchModel.objects.filter(Bname=u_id[0].Branch)
+    # print(bran[0].B_no)
+    # dept=Uid[0].Branch
+    # print(dept)
+    clist=Course.objects.filter(branch=u_id[0].Branch)
+    # clist=Course.objects.all()
+    print(clist)
+    return render(request,'st_clist.html',{'forms':clist})

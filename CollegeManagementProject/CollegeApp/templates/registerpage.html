@@ -5,8 +5,13 @@
 <div class="col-md-8 offset-2 my-2">
     {%if a is 1%}
     <h1 class="text-center my-2" style="font-family: 'Times New Roman', Times, serif;background-color: rgb(56, 148, 190);border-radius: 20px;"><u> Student Sign-in</u></h1>
-    {%else%}
+    {%endif%}
+
+    {%if a is 2%}
     <h1 class="text-center my-2" style="font-family: 'Times New Roman', Times, serif;background-color: rgb(250, 198, 57);border-radius: 20px;"><u> Teacher Sign-in</u></h1>
+    {%endif%}
+    {%if a is 3%}
+    <h1 class="text-center my-2" style="font-family: 'Times New Roman', Times, serif;background-color: rgb(88, 116, 241);border-radius: 20px;"><u> Edit Profile</u></h1>
     {%endif%}
 <form action="" method="post">
     {%csrf_token%}

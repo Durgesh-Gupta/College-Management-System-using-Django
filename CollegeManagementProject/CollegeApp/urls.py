@@ -32,4 +32,6 @@ urlpatterns = [
     path('addMarks',v.addMarks),
     path('MarksList',v.MarksList),
 
+    path('MyCourse',v.MyCourse),
+
 ]

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block main%}
+
+
+{%load static%}
+<div class="row mx-2">
+    {% for i in forms%}
+<div class="card-deck mb-4 mr-4">
+  <div class="card" style="width: 15rem;">
+    <img class="card-img-top" src="{{i.img}}" height="180px" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{i.Cname}}</h5>
+      <p class="card-text">{{i.desc}}</p>
+      <button type="button" class="btn btn-primary">Read more</button>
+    </div>
+    </div>
+    </div>
+    
+{%endfor%}
+  </div>
+
+
+
+
+
+{%endblock%}
