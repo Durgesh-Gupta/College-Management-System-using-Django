@@ -6,6 +6,7 @@ urlpatterns = [
     path('register',v.register),
     path('pregister',v.pregister),
     path('about',v.About),
+    path('contact',v.Contact),
     
     path('TEacherview',v.teacherview),
 
