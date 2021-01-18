@@ -7,6 +7,9 @@ from django.views.generic import ListView,UpdateView
 def home(request):
     return render(request,'home.html')
     
+def About(request):
+    return render(request,'about.html')
+    
 def register(request):
     return render(request,'home.html')
 
