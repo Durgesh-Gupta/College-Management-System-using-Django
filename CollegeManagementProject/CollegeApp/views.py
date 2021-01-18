@@ -177,6 +177,11 @@ def MarksList(request):
     marks=Marks.objects.all()
     return render(request,'Markslist.html',{'marks':marks})
 
+# STuddent marklist
+def SMarksList(request):
+    marks=Marks.objects.filter(s_id=request.session.get('uid'))
+    return render(request,'smarklist.html',{'marks':marks})
+
 def UpdateMarks(request,id):
     e=Marks.objects.get(id=id)
     if request.method=='POST':
