@@ -1,63 +1,93 @@
-from django.shortcuts import render,HttpResponse,redirect
-from .models import Userform,UserModel,Course,LoginForm,position,Staff,StaffForm,User,Leave,Leaveform,leavestatus,Tleave
+from django.contrib.auth import login, logout, authenticate
+from django.shortcuts import render, HttpResponse, redirect
+from .models import Userform, UserModel, Course, LoginForm, position, Staff, StaffForm, User, Leave, Leaveform, leavestatus, Tleave
 from django.contrib.auth.models import User
 
-from django.views.generic import ListView,UpdateView
+from django.views.generic import ListView, UpdateView
 # Create your views here.
+
+
 def home(request):
-    return render(request,'home.html')
-    
+    return render(request, 'home.html')
+
+
 def Contact(request):
-    return render(request,'contact_us.html')
+    return render(request, 'contact_us.html')
+
 
 def About(request):
-    return render(request,'about.html')
-    
+    return render(request, 'about.html')
+
+
 def register(request):
-    return render(request,'home.html')
+    return render(request, 'home.html')
+
 
 def pregister(request):
-    return render(request,'pre-register.html')
+    return render(request, 'pre-register.html')
+
 
 def register(request):
-    if request.method=='POST':
-        f=Userform(request.POST)
+    if request.method == 'POST':
+        f = Userform(request.POST)
         f.save()
         return redirect('/')
     else:
-        f=Userform
-        a=1
-        return render(request,'registerpage.html',{'forms':f,'a':a})
+        f = Userform
+        a = 1
+        return render(request, 'registerpage.html', {'forms': f, 'a': a})
 
 # # lists------------------------------>
-class Studentlist(ListView):
-    model=UserModel
 
-    template_name="studentlist.html"
+
+class Studentlist(ListView):
+    model = UserModel
+
+    template_name = "studentlist.html"
     # teacdep=
     # stlist=UserModel.objects.filter()
 
 
 class CourseList(ListView):
-    model=Course
-    template_name="course.html"
+    model = Course
+    template_name = "course.html"
+
 
 class TeacherList(ListView):
-    model=Staff
-    template_name="stafflist.html"
+    model = Staff
+    template_name = "stafflist.html"
+
 
 # # Logi------------------->
-from django.contrib.auth import login,logout,authenticate
+
 
 def login_view(request):
-    if request.method=='POST':
-        uname=request.POST.get('usern')
-        passw=request.POST.get('passw')
+    if request.method == 'POST':
+        uname = request.POST.get('usern')
+        passw = request.POST.get('passw')
         # print(uname)
-        user=authenticate(request,username=uname,password=passw)
+        user = authenticate(request, username=uname, password=passw)
         if user is not None:
-            request.session['uid']=user.id
-            login(request,user)
+            request.session['uid'] = user.id
+            login(request, user)
+            print(user.id)
+            stud = UserModel.objects.filter(id=user.id)
+            # print(stud[0].position)
+            try:
+                if stud[0].position !='STUDENT':
+                    pass
+                
+            except:
+                # sid = request.session.get('uid')
+                # print(sid)
+                staff = Staff.objects.filter(id=user.id)
+                std = UserModel.objects.all().count()
+                cour = Course.objects.all().count()
+                leav = Leave.objects.filter(status=1).count()
+                data = {'totalstudent': std, 'allsub': cour, 'leav': leav,'postn':1}
+                return render(request, 'thome.html', data)
+                
+
             return redirect('/')
         else:
             msg="Invalid username or password"
