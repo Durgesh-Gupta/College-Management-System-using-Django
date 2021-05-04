@@ -1,2 +1,2 @@
 web: gunicorn CollegeApp.wsgi --log-file -
-heroku ps:scale web=1
+
