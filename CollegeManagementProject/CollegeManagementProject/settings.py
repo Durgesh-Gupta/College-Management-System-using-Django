@@ -25,7 +25,7 @@ SECRET_KEY = 'nz@+snunuf6vgsa3g^c$#0$f_l5)menv-*ntz(k59m8jmhw#!p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1","s-m-system.herokuapp.com/"]
+ALLOWED_HOSTS = ["127.0.0.1","school-msystem.herokuapp.com"]
 
 
 # Application definition
